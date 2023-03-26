@@ -1,0 +1,52 @@
+public class Question_6 {
+	/*
+	 * Sum square difference
+	 * 
+	 * The sum of the squares of the first ten natural numbers is 385.
+	 * 
+	 * The square of the sum of the first ten natural numbers is 3025.
+	 * 
+	 * Hence the difference between the sum of the squares of the first ten natural
+	 * numbers and the square of the sum is 2046.
+	 * 
+	 * Find the difference between the sum of the squares of the first one hundred
+	 * natural numbers and the square of the sum.
+	 */
+
+	public static void main(String[] args) {
+
+		int sumOfSquares;
+		int squareOfSum;
+		int max = 100;
+
+		sumOfSquares = findSumOfSquares(max);
+		squareOfSum = findSquareOfSum(max);
+
+		System.out.println(
+				String.format("Difference : %s - %s = %s", squareOfSum, sumOfSquares, (squareOfSum - sumOfSquares)));
+	}
+
+	// FUNCS
+	
+	static int findSumOfSquares(int max) {
+		int result = 0;
+
+		for (int i = 1; i <= max; i++) {
+			result += i * i;
+		}
+
+		return result;
+	}
+
+	static int findSquareOfSum(int max) {
+		int sum = 0;
+		int result = 0;
+
+		for (int i = 1; i <= max; i++) {
+			sum += i;
+		}
+
+		result = sum * sum;
+		return result;
+	}
+}
