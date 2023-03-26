@@ -1,0 +1,68 @@
+public class Question_4 {
+	/*
+	 * Largest palindrome product
+	 * 
+	 * A palindromic number reads the same both ways. The largest palindrome made
+	 * from the product of two 2-digit numbers is 9009 = 91 × 99. Find the largest
+	 * palindrome made from the product of two 3-digit numbers.
+	 */
+
+	public static void main(String args[]) {
+
+		int number = 999;
+		int number2 = 999;
+		int palindromic = 0;
+
+		for (int i = number; i > 99; i--) {
+
+			for (int j = number2; j > 99; j--) {
+
+				int result = i * j;
+
+				if (checkIfPalindromic(result)) {
+
+					palindromic = checkBiggestPalindromic(palindromic, result);
+					break;
+				}
+			}
+		}
+		
+		System.out.println(palindromic);
+	}
+
+	// FUNCS
+
+	/**
+	 * Check if the numbers are equal after reversing it.
+	 */
+	static boolean checkIfPalindromic(int number) {
+		int reversedNumber = reverseTheNumber(number);
+
+		if (number == reversedNumber) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Reverse the number : Integer -> String -> Char[] Reverse char[] Char[] ->
+	 * String -> Integer(reversed)
+	 */
+	static int reverseTheNumber(int number) {
+		char[] numberAsArray = Integer.toString(number).toCharArray();
+		char[] reversedArray = new char[numberAsArray.length];
+		int lastIndex = numberAsArray.length - 1;
+
+		for (int i = 0; lastIndex >= 0; i++) {
+
+			reversedArray[i] = numberAsArray[lastIndex];
+			lastIndex--;
+		}
+
+		return Integer.parseInt(String.valueOf(reversedArray));
+	}
+
+	static int checkBiggestPalindromic(int currentNumber, int number) {
+		return Math.max(currentNumber, number);
+	}
+}
